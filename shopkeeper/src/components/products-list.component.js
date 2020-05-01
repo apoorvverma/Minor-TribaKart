@@ -3,7 +3,10 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
+import DeleteIcon from "@material-ui/icons/Delete";
+import EditIcon from "@material-ui/icons/Edit";
 import { SnackbarProvider, useSnackbar } from "notistack";
+import { IconButton, Icon } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -35,18 +38,24 @@ const Product = (props) => {
       <td>{description}</td>
       <td>
         <Link to={"/edit/" + _id} onClick={handleClickVariant("info")}>
-          <Button variant="outlined">edit</Button>
-        </Link>{" "}
-        |{" "}
+          <IconButton variant="contained" color="primary">
+            <EditIcon />
+          </IconButton>
+        </Link>
         <a
           href="#"
           onClick={() => {
             props.deleteProduct(_id);
           }}
         >
-          <Button variant="outlined" onClick={handleClickVariant2("info")}>
-            delete
-          </Button>
+          <IconButton
+            variant="contained"
+            color="primary"
+            onClick={handleClickVariant2("info")}
+          >
+            <DeleteIcon />
+          </IconButton>
+          {/* </Button> */}
         </a>
       </td>
     </tr>
