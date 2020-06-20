@@ -7,7 +7,7 @@ import Dashboard from "./screens/Dashboard";
 const App = () => {
   return (
     <CartProvider>
-      <SnackbarProvider maxSnack={2}>
+      <SnackbarProvider maxSnack={3}>
         <TopNav />
         <Dashboard />
       </SnackbarProvider>
