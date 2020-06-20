@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "@material-ui/lab": "^4.0.0-alpha.51",
-    "bootstrap": "^4.4.1",
-    "react-router-dom": "^5.1.2"
-  }
-}
