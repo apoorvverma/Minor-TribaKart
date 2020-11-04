@@ -1,34 +1,8 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { makeStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
-import DeleteIcon from "@material-ui/icons/Delete";
-import EditIcon from "@material-ui/icons/Edit";
-import { SnackbarProvider, useSnackbar } from "notistack";
-import { IconButton, Icon } from "@material-ui/core";
-
-const useStyles = makeStyles((theme) => ({
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing(9),
-  },
-}));
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Product = (props) => {
-  const { enqueueSnackbar } = useSnackbar();
-
-  const handleClickVariant = (variant) => () => {
-    // variant could be success, error, warning, info, or default
-    enqueueSnackbar("You are in Edit Mode!", { variant });
-  };
-  const handleClickVariant2 = (variant) => () => {
-    // variant could be success, error, warning, info, or default
-    enqueueSnackbar("Product Deleted successfully!", {
-      variant,
-    });
-  };
-
   const {
     product: { title, description, _id },
   } = props;
@@ -37,25 +11,14 @@ const Product = (props) => {
       <td>{title}</td>
       <td>{description}</td>
       <td>
-        <Link to={"/edit/" + _id} onClick={handleClickVariant("info")}>
-          <IconButton variant="contained" color="primary">
-            <EditIcon />
-          </IconButton>
-        </Link>
+        <Link to={'/edit/' + _id}>edit</Link> |{' '}
         <a
-          href="#"
+          href='#'
           onClick={() => {
             props.deleteProduct(_id);
           }}
         >
-          <IconButton
-            variant="contained"
-            color="primary"
-            onClick={handleClickVariant2("info")}
-          >
-            <DeleteIcon />
-          </IconButton>
-          {/* </Button> */}
+          delete
         </a>
       </td>
     </tr>
@@ -63,12 +26,10 @@ const Product = (props) => {
 };
 
 const ProductsList = () => {
-  const classes = useStyles();
   const [products, setProduct] = useState([]);
-
   useEffect(() => {
     axios
-      .get("http://localhost:5050/products/")
+      .get('http://localhost:5050/products/')
       .then((response) => {
         setProduct(response.data);
       })
@@ -79,7 +40,7 @@ const ProductsList = () => {
 
   const deleteProduct = (id) => {
     axios
-      .delete("http://localhost:5050/products/" + id)
+      .delete('http://localhost:5050/products/' + id)
       .then((res) => console.log(res.data));
     setProduct(products.filter((el) => el._id !== id));
   };
@@ -97,10 +58,10 @@ const ProductsList = () => {
   };
 
   return (
-    <div className={classes.content}>
+    <div>
       <h3>Logged products</h3>
-      <table className="table">
-        <thead className="thead-light">
+      <table className='table'>
+        <thead className='thead-light'>
           <tr>
             <th>Title</th>
             <th>Description</th>
