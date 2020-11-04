@@ -31,7 +31,7 @@ __Prerequisites__<br />
 
 __Steps to get started with project__<br />
 
-1) __Clone__ the repo using __git clone https://github.com/Adarshg315/e-tribal.git__ form terminal.<br />
+1) __Clone__ the repo using __git clone https://github.com/apoorvverma/Minor-TribaKart.git__ form terminal.<br />
 2) Change the directory to __e-tribal__<br />
 3) To start __Frontend__<br />
     3.1 Change the directory to __e-tribal/frontend__.<br />
